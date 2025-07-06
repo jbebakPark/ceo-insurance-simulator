@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CEO ë³´í—˜ ì‹œë®¬ë ˆì´í„°</title>
+  <title>CEO º¸Çè ½Ã¹Ä·¹ÀÌÅÍ</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
@@ -78,7 +78,7 @@
 
       const calculate = () => {
         if (!isValid) {
-          alert("ëª¨ë“  ìˆ˜ì¹˜ëŠ” 0ë³´ë‹¤ ì»¤ì•¼ í•©ë‹ˆë‹¤.");
+          alert("¸ğµç ¼öÄ¡´Â 0º¸´Ù Ä¿¾ß ÇÕ´Ï´Ù.");
           return;
         }
         const benefit = inputs.revenue * inputs.taxRate * 10000;
@@ -107,16 +107,16 @@
 
       const downloadPDF = () => {
         const element = document.getElementById("report");
-        html2pdf().from(element).save("ë³´í—˜_ì‹œë®¬ë ˆì´ì…˜_ê²°ê³¼.pdf");
+        html2pdf().from(element).save("º¸Çè_½Ã¹Ä·¹ÀÌ¼Ç_°á°ú.pdf");
       };
 
       const toggleLang = () => setLang(lang === "ko" ? "en" : "ko");
 
       const labels = {
         ko: {
-          title: "CEO ë³´í—˜ ì‹œë®¬ë ˆì´í„°", login: "ë¡œê·¸ì¸", logout: "ë¡œê·¸ì•„ì›ƒ", google: "Google ë¡œê·¸ì¸",
-          name: "ì´ë¦„", company: "íšŒì‚¬ëª…", revenue: "ì—°ê°„ ë§¤ì¶œì•¡ (ì–µ ì›)", valuation: "ê¸°ì—… ê°€ì¹˜ (ì–µ ì›)", taxRate: "ë²•ì¸ì„¸ìœ¨ (%)",
-          insuranceCost: "ë³´í—˜ë£Œ (ë§Œì›)", calculate: "ê³„ì‚°", download: "PDF ë‹¤ìš´ë¡œë“œ", admin: "ê´€ë¦¬ì ëŒ€ì‹œë³´ë“œ", search: "ì´ë©”ì¼ ë˜ëŠ” íšŒì‚¬ëª… ê²€ìƒ‰"
+          title: "CEO º¸Çè ½Ã¹Ä·¹ÀÌÅÍ", login: "·Î±×ÀÎ", logout: "·Î±×¾Æ¿ô", google: "Google ·Î±×ÀÎ",
+          name: "ÀÌ¸§", company: "È¸»ç¸í", revenue: "¿¬°£ ¸ÅÃâ¾× (¾ï ¿ø)", valuation: "±â¾÷ °¡Ä¡ (¾ï ¿ø)", taxRate: "¹ıÀÎ¼¼À² (%)",
+          insuranceCost: "º¸Çè·á (¸¸¿ø)", calculate: "°è»ê", download: "PDF ´Ù¿î·Îµå", admin: "°ü¸®ÀÚ ´ë½Ãº¸µå", search: "ÀÌ¸ŞÀÏ ¶Ç´Â È¸»ç¸í °Ë»ö"
         },
         en: {
           title: "CEO Insurance Simulator", login: "Login", logout: "Logout", google: "Google Login",
@@ -132,7 +132,7 @@
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Logo_sample.svg/120px-Logo_sample.svg.png" alt="logo" className="h-8"/>
               <h1 className="text-xl font-bold">{labels[lang].title}</h1>
             </div>
-            <button onClick={toggleLang} className="text-sm underline">{lang === "ko" ? "English" : "í•œêµ­ì–´"}</button>
+            <button onClick={toggleLang} className="text-sm underline">{lang === "ko" ? "English" : "ÇÑ±¹¾î"}</button>
           </div>
           {!user ? (
             <div className="space-x-2">
@@ -156,20 +156,20 @@
           <button onClick={calculate} className="px-4 py-2 bg-purple-500 text-white rounded">{labels[lang].calculate}</button>
           {results && (
             <div id="report" className="mt-6 p-4 border rounded bg-gray-50">
-              <h2 className="text-lg font-bold mb-2">ğŸ“‹ {labels[lang].title} Report</h2>
-              <p>ğŸ“… {new Date().toLocaleString()}</p>
-              {user && <p>ğŸ‘¤ ì‚¬ìš©ì: {user.email}</p>}
+              <h2 className="text-lg font-bold mb-2">?? {labels[lang].title} Report</h2>
+              <p>?? {new Date().toLocaleString()}</p>
+              {user && <p>?? »ç¿ëÀÚ: {user.email}</p>}
               <p>{labels[lang].name}: {results.name}</p>
               <p>{labels[lang].company}: {results.company}</p>
-              <p>{labels[lang].revenue}: {results.revenue} ì–µ ì›</p>
-              <p>{labels[lang].valuation}: {results.valuation} ì–µ ì›</p>
+              <p>{labels[lang].revenue}: {results.revenue} ¾ï ¿ø</p>
+              <p>{labels[lang].valuation}: {results.valuation} ¾ï ¿ø</p>
               <p>{labels[lang].taxRate}: {results.taxRate} %</p>
-              <p>ğŸ’° í˜œíƒ: {results.benefit.toLocaleString()} ì›</p>
-              <p>ğŸ“ˆ ROI: {results.roi.toFixed(2)}%</p>
-              <p>ğŸ’¼ ìˆœì´ìµ: {results.netProfit.toLocaleString()} ì–µ ì›</p>
-              <p>ğŸ“‰ ì„¸ê¸ˆ ì ˆê°ì•¡: {results.taxSavings.toLocaleString()} ì›</p>
-              <p>ğŸ›¡ï¸ ë³´í—˜ ì ˆê° íš¨ê³¼: {results.insuranceSavings.toLocaleString()} ì›</p>
-              <p>ğŸ“Š ë³´í—˜ ëŒ€ë¹„ ROI: {results.insuranceROI.toFixed(2)}%</p>
+              <p>?? ÇıÅÃ: {results.benefit.toLocaleString()} ¿ø</p>
+              <p>?? ROI: {results.roi.toFixed(2)}%</p>
+              <p>?? ¼øÀÌÀÍ: {results.netProfit.toLocaleString()} ¾ï ¿ø</p>
+              <p>?? ¼¼±İ Àı°¨¾×: {results.taxSavings.toLocaleString()} ¿ø</p>
+              <p>??? º¸Çè Àı°¨ È¿°ú: {results.insuranceSavings.toLocaleString()} ¿ø</p>
+              <p>?? º¸Çè ´ëºñ ROI: {results.insuranceROI.toFixed(2)}%</p>
               <div className="h-64 mt-4">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={[
